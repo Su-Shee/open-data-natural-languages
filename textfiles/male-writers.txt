@@ -1,0 +1,556 @@
+Kernel-Log - Was . bringt (): Dateisysteme & Storage
+
+ Das Anlegen temporärer Dateien wird mit Linux . sicherer. NFS
+ unterstützt jetzt SELinux und das Cluster-Dateisystem Lustre hat es
+ trotz einiger Querelen in den Staging-Bereich geschafft.
+
+ Kernel-Log-Logo Die Entwicklung von Linux . scheint trotz Ferienzeit
+ auf der Nordhalbkugel mit dem üblichen Tempo voranzugehen. Beim
+ vierten, am Sonntag freigegeben RC gab es indes wieder mehr Änderungen,
+ als Torvalds lieb ist. Die haben sich aber auf mehr Bereiche verteilt
+ als zuvor; Torvalds begrüßte das, nachdem er die anderen
+ Kernel-Entwickler beim RC noch für ein hohes Patch-Aufkommen
+ kritisiert hatte.
+
+ Alle größeren Neuerungen von Linux . haben Torvalds und seine
+ Mitstreiter wie gewohnt in den ersten zwei Wochen nach Freigabe der
+ Version . in den Kernel integriert. Linux . befindet sich
+ daher jetzt in der Stabilisierungsphase, in der umfangreiche Änderungen
+ die Ausnahme sind. Wir können daher bereits jetzt einen umfassenden
+ Überblick über die wichtigsten Neuerungen geben, die der in der ersten
+ Septemberhälfte erwartete Kernel . bringen wird.
+
+ Den Anfang der auf eine Artikelserie verteilten Beschreibung macht eine
+ Übersicht zu den Neuerungen rund um Dateisysteme und Storage-Hardware;
+ in den nächsten Wochen folgen Artikel zur Grafiktreibern,
+ Netzwerk-Unterstützung, Kernel-Infrastruktur,
+ Prozessor/Plattform-Unterstützung und Treibern für andere Hardware.
+
+Dateisysteme
+
+ Mit Hilfe des neuen Flags O_TMPFILE für die Funktionsaufrufe open
+ und openat können Anwendungen temporäre Dateien anlegen, die im
+ Dateisystem nicht sichtbar sind (u. a. , , ). Das kann
+ Symlink-Attacken und einige andere Tricks unterbinden, die Angreifer
+ gelegentlich nutzen, um sich höhere Rechte zu verschaffen.
+
+ Der Ext-Code erhielt unter anderem eine Änderung, die das
+ Locking an einer Stelle optimiert, die zuletzt leicht zum Flaschenhals
+ wurde. Btrfs erhielt die "gewohnte Mischung" aus Fehlerkorrekturen,
+ Aufräumarbeiten und Optimierungen; darunter Anpassungen, damit das
+ Dateisystem nicht verfrüht meldet, dass ihm der Speicherplatz
+ ausgegangen ist.
+
+ Mit Hilfe eines neuen Label-Typs unterstützt der Server- und
+ Client-Code für die vierte Generation des Network File System (NFS)
+ jetzt Security Label. Dadurch lassen sich nun auch auf NFSv die
+ Sicherheitskontext-Informationen für SELinux speichern.
+
+ Einige Änderungen am CIFS-Code verbessern die SMB-Unterstützung.
+
+ FFS, das bei Linux . eingeführte Flash Friendly File System,
+ unterstützt jetzt Security Labels und eignet sich so für den
+ Einsatz mit Sicherheitssoftware wie AppArmor, SELinux, Smack und
+ TOMOYO.
+
+ Greg Kroah-Hartman hatte bei der Lustre-Integration mit
+ Qualitätsmängeln zu kämpfen. Das bei vielen Supercomputern der
+ Top--Liste eingesetzte Cluster-Dateisystem Lustre ist in den
+ Staging-Bereich des Kernels eingeflossen; dort liegt unreifer Code,
+ der die Qualitätsansprüche der Kernel-Entwickler nicht erfüllt. Wie
+ Commits und ein schnippischer Google-Plus-Kommentar von Greg
+ Kroah-Hartman zeigen, hat das vor einem Jahr in Intels Hände
+ gelangte Dateisystem tatsächlich noch das ein oder andere Problem.
+
+Storage
+
+ Zum Device-Mapper ist unter anderem das Target dm-switch
+ gestoßen - ein Multipath-Framework für Storage Arrays, die die
+ Pfade zu den verschiedenen Speicherbereichen dynamisch konfigurieren.
+   __________________________________________________________________
+
+Die kleinen Perlen
+
+ Einige weitere für Sie vielleicht interessante Neuerungen liefert die
+ folgenden Liste mit den englischen Commit-Überschriften
+ ausgewählter Änderungen, die es in den beschriebenen Kernel-Subsystemen
+ gab. Wie viele Verweise im vorangegangenen Text verlinken die Einträge
+ auf das Webfrontend des von Linus Torvalds gepflegten Git-Zweigs
+ auf Kernel.org. Der über diese Links angezeigte Commit-Kommentar
+ und der darunter ausgegebene Patch liefern Hintergrundinformationen
+ zur jeweiligen Änderung.
+
+
+ Ein "C" im Bereich "  " kennzeichnet Commits mit Änderungen an
+ Kconfig-Dateien, welche die Konfigurationsoptionen samt der zugehörigen
+ Hilfetexte enthalten. Mit "I" ausgezeichnete Patches rüsten neue PCI-
+ oder USB-IDs nach; jene mit "D" verändern die dem Kernel beiliegende
+ Dokumentation; Commits mit "N" legen neue Dateien an. Die Zahl
+ vermittelt einen groben Eindruck zur Größe des Patches: Eine ""
+ kennzeichnet Patches, die inklusive Kommentar zwischen  und  KByte
+ groß sind; Patches mit einer "" sind  KByte oder größer.
+
+ Weitere Hintergründe und Informationen rund um Entwicklungen im
+ Linux-Kernel und dessen Umfeld finden sich in den vorangegangenen
+ Kernel-Logs auf heise open. Neue Ausgaben des
+ Kernel-Logs werden auf den Identi.ca- und Twitter-Konten
+ "@kernellog" erwähnt. (thl)
+Das bringt das SP für Suse Linux Enterprise 
+
+ Das Service Pack  bringt zahlreiche Optimierungen zur Virtualisierung
+ und baut mit Secure-Boot-Support und neuen Treibern die Unterstützung
+ für moderne Hardware aus. Es gab zudem zahlreiche Verbesserungen für
+ die Storage- und Netzwerktechniken bei Servern.
+
+ Nicht ganz eineinhalb Jahre nach der zweiten Auffrischung des auf
+ Unternehmenskunden ausgerichteten Suse Linux Enterprise (SLE)  hat
+ Suse jetzt das Service Pack (SP)  freigegeben Es bringt neben
+ Fehlerkorrekturen, frischen Treibern und aktualisierter Software auch
+ eine Reihe neuer Funktionen.
+
+UEFI Secure Boot
+
+ Zu den Neuerungen des SP zählt die Unterstützung für UEFI Secure Boot.
+ Die Distribution bootet daher jetzt auch auf typischen
+ Windows--Systemen, denn dort ist Secure Boot in der Regel aktiv,
+ sodass die Firmware nur vertrauenswürdige Betriebssysteme startet. Die
+ SLE-SP-Installationsmedien für x--Systeme gehören jetzt dazu, da
+ sie eine Variante des Bootloaders Shim einsetzen, der von Microsoft
+ signiert wurde - diesen Weg nutzen auch aktuelle Versionen von Fedora,
+ OpenSuse und Ubuntu.
+
+ Anders als bei Ubuntu und genau wie bei Fedora führt Secure Boot bei
+ SLE zu einigen Einschränkungen im Betrieb. So funktionieren unter
+ anderem Kexec, Kdump und der Ruhezustand (Software-Suspend/Hibernation)
+ bei aktivem Secure Boot nicht; zudem muss man Grafiktreiber mit
+ Unterstützung für KMS (Kernel-based Mode-Setting) einsetzen. Ferner
+ müssen der von Shim aufgerufene Bootloader, der darüber gestartete
+ Kernel und die von ihm geladenen Module signiert sein. Im
+ Auslieferungszustand ist das eine Suse-Signatur. Über den von Suse
+ entwickelten MOK-Mechanismus kann man aber eigene Schlüssel
+ hinterlegen, damit sich selbst kompilierte und anschließend signierte
+ Kernel und Kernel-Module bei aktivem Secure Boot laden lassen. Das
+ verkompliziert den Einsatz externer Treiber; Suse will hier mit
+ Erweiterungen für das Partner Linux Driver Program gegensteuern.
+
+Unterbau
+
+ Der Kernel von SLE basiert auf Linux .. Damit nimmt ein Service Pack
+ für SLE  zum ersten Mal keinen größeren Wechsel bei der zugrunde
+ liegenden Kernel-Version vor, nachdem SP ein Update von Linux
+ .. auf .. und SP den Wechsel auf Linux . gebracht
+ hat. Offenbar gab es bei Suse zwischenzeitlich ein Umdenken, denn bei
+ der Freigabe des SP wurden größere Updates des Kernels noch als ein
+ Vorteil der Distribution bezeichnet, der Teil des damals propagierten
+ Entwicklungsmodells "Forward-looking development" sei.
+
+ Durch den Wechsel auf neuere Kernel.org-Kernel als Basis für SLE-Kernel
+ hatten SLE-Kunden neue Funktionen und Treiber erhalten, die
+ zwischenzeitlich in die offiziellen Linux-Kernel eingezogen waren.
+ Durch die Unterschiede bei den Kernel-Versionen funktionierten
+ allerdings Treiber, die etwa für den Kernel von SLE SP übersetzt
+ wurden, gar nicht oder erst nach Anpassungen mit dem SP. Einige
+ SLE-Nutzer haben gegenüber heise open von Kompatibilitätsproblemen
+ mit Userland-Software aufgrund der größeren Sprünge beim Kernel
+ berichtet.
+
+ Durch den jetzt unterbleibenden Wechsel sollten solche Probleme
+ seltener sein. Suse hat aber durchaus eine Reihe größerer Änderungen am
+ Kernel vorgenommen und für das SP einige Funktionen aus neueren
+ Kernels eingebaut, wie es etwa auch Red Hat bei Red Hat Enterprise
+ Linux (RHEL) macht, bei dem der Basis-Kernel von jeher der gleiche
+ bleibt.
+
+Versionssprung
+
+ Das SP bringt aber auch größere Software-Updates mit - etwa bei MySQL,
+ denn Suse gibt mit dem SP das Upstream nicht mehr gewartete MySQL .
+ auf und legt jetzt die Version . bei. Da diese Version mit den
+ Datenbanken der alten Ausgabe nicht zusammenarbeitet, muss der
+ Systemadministrator diese durch Aufruf eines Skripts umwandeln -
+ Details erläutern die Release Notes.
+
+ Die sollten auch Nutzer von Postfix konsultieren, denn das macht mit
+ dem SP einen Versionssprung von .. auf ..; dadurch verhält sich
+ der MTA (Message transfer agent) jetzt an einigen Stellen leicht
+ anders, bietet aber auch zusätzliche Funktionen.
+
+ Suse hat zudem zahlreiche Treiber aktualisiert, durch die SLE nun die
+ Xeon-Prozessoren der E-Familie ebenso unterstützt wie die vierte, vor
+ einem Monat freigegebene Version von Intels Core-Prozessoren. Die
+ Distribution eignet sich durch das SP jetzt auch für AMDs Opteron der
+ Serien  und .
+   __________________________________________________________________
+
+Storage
+
+ Bei der Dateisystem-Unterstützung gibt es keine größeren Änderungen zum
+ SP: Als Standard-Dateisystem dient Ext und der Suse-Support deckt
+ auch den Einsatz von Reiserfs ., XFS und Btrfs ab. Letzteres gilt im
+ offiziellen Linux-Kernel weiterhin als experimentell; Suse hat den
+ Dateisystem-Code aber aktualisiert, sodass Btrfs nun unter anderem
+ Quotas für Subvolumes unterstützt. OCFS-Support gibt es über die High
+ Availability Extension. Den Einsatz von Ext unterstützt Suse nicht,
+ daher kann der SLE-Kernel auch nur von Ext-Dateisystemen lesen, sofern
+ man die Schreib-Unterstützung nicht manuell aktiviert.
+
+ Das beim SP eingeführte und dort zusammen mit Btrfs nutzbare
+ Snapshot-Tool Snapper kann jetzt auch mit der
+ Thin-Provisioning-Funktion von LVM zusammenarbeiten, die das SP
+ einführt. Zudem will Suse die Performance von Snapper verbessert haben,
+ bei dem jetzt auch Anwender ohne Root-Rechte die Snapshots verwalten
+ können.
+
+Desktop-Version
+
+ Bei Suse Linux Enterprise Desktop (SLED) hat KVM weiterhin den Stand
+ eines Technology Preview, für das Suse offiziell keinen Support
+ liefert. Da die erst beim SP eingeführte Java-Laufzeitumgebung OpenJDK
+  (java-__-openjdk) von seinen Entwicklern aufgegeben wurde, legt
+ Suse jetzt OpenJDK  bei, das nicht voll kompatibel zum Vorläufer
+ ist.
+
+Server-Ausführung
+
+ Suse Linux Enterprise Server (SLES) unterstützt bei der Virtualisierung
+ mit KVM nun bis zu  TByte RAM und  CPU-Kerne pro Gast; bisher waren
+ es  GByte und  Kerne. SLES beherrscht jetzt auf neueren
+ Intel-Prozessoren das Starten einer VM aus einer VM (Nesting); diese
+ Funktion gilt als Technology Preview.
+
+ Der bei der KVM-Virtualisierung involvierte System-Emulator Qemu liegt
+ jetzt in der Version . bei, die eine Reihe neuer Funktionen sowie
+ einige Performance-Verbesserungen gebracht hat. Darunter das im SP als
+ Technical Preview eingestufte virtio-blk data plane, mit dem Gäste
+ flott auf die Datenträger zugreifen können, die ihnen ein Host stellt.
+
+ Der Xen-Code basiert auf Xen .. Das Überstellen von PCI-Geräten an
+ KVM- oder Xen-Gäste lässt sich jetzt via libvirt regeln. Das Treiber
+ für SLES-Gastsysteme enthaltende "Suse Linux Enterprise Virtual Machine
+ Driver Pack" trägt jetzt die Versionsnummer . und bringt Treiber für
+ Windows  und Windows Server  mit.
+
+ Unter einer ganzen Reihe von Verbesserungen zum SLES-Einsatz unter
+ Microsofts Hypervisor Hyper-V ist ein Framebuffer-Grafiktreiber, der
+ beim Betrieb unter Windows Server  Auflösungen bis zu  x 
+ Bildpunkten unterstützt. Neu ist auch Unterstützung für Host Initiated
+ Backup und das Ändern der Speichermenge von Gästen über Ballooning;
+ durch weitere Verbesserungen sollten Windows-Host und SLES-Gäste nun
+ das beste Kommunikationsprotokoll automatisch aushandeln, um einen
+ möglichst effizienten Betrieb zu ermöglichen.
+
+ SP bringt SLES zudem Unterstützung für TIPC (Transparent Inter-Process
+ Communication). Der Kernel-Code zum Aufsetzen eines via iSCSI oder
+ FCoE erreichbaren iSCSI-Targets hat Suse auf den Stand gehoben, den LIO
+ (Linux-Iscsi.org) im Linux-Kernel . hat. Als optionaler Compiler
+ liegt dem SDK nun GCC .. bei, der ISO C  und ISO C 
+ umfassender unterstützt als der Systemcompiler. Openswan, IBMs
+ Java-Laufzeitumgebung und PHP . wurden entfernt.
+
+ Der SLE-Kernel bringt jetzt Grundlagen mit, um Intels
+ Fernwartungstechnik Active Management Technology (AMT)
+ anzusprechen. Um sie tatsächlich zu nutzen, muss man allerdings noch
+ Intel-Tools nachinstallieren. Die SLE-Ausführung für System z
+ (sx) bietet KVM-Unterstützung als Technical Preview; das soll
+ Linux-affinen Administratoren die Handhabung von virtuellen Maschinen
+ auf IBMs Plattform erleichtern.
+
+Testversionen
+
+ Ein Update auf das SP gelingt unter anderem über Zypper.
+ SLE-Kunden haben etwas mehr als ein halbes Jahr Zeit zum Wechsel auf
+ das SP, denn zu Ende Januar  stellt Suse den Support für SLE mit
+ SP ein. Nur Kunden mit Long Term Service Pack Support (LTSS) erhalten
+ dann noch Unterstützung für das SP.
+
+ Suse bietet -Tage-Testversionen von SLE SP an, die man nach einer
+ Registrierung kostenlos herunterladen kann. (thl)
+
+ Siehe dazu auch:
+
+   * Suse Linux Enterprise Server im heise Software-Verzeichnis
+   * Suse Linux Enterprise Desktop im heise Software-Verzeichnis
+Die Woche: Politik und Freie Software
+
+ Die Internet-Enquete des Bundestags hat ihre Empfehlungen zu offenen
+ Standards und Freier Software ausgesprochen. Hat das diese Themen
+ weitergebracht?
+
+ Matthias Kirschner ist der deutsche Koordinator der Free Software
+ Foundation Europe (FSFE).
+
+ Immer wieder werde ich gefragt, was die Enquete-Kommission Internet und
+ digitale Gesellschaft des deutschen Bundestags, die diese Woche ihre
+ Arbeit abgeschlossen hat, zum Thema Freie Software gemacht hat und
+ ob das die Entwicklung und Verbreitung Freier Software weiterbringt.
+ Der kürzlich veröffentlichte Zwischenbericht der Projektgruppe
+ Interoperabilität, Standards und Freie Software enthält auf 
+ Seiten eine Analyse der Situation,  gemeinsame Handlungsempfehlungen
+ sowie einige Änderungsanträge der Opposition und ihrer Sachverständigen
+ sowie Vorschläge aus der öffentlichen Beteiligungsplattform - das
+ Ergebnis von neuen Sitzungen seit dem . Juni letzten Jahres. Was
+ steht in diesem Bericht und welche Auswirkungen wird er haben?
+
+ Das Ergebnis des ersten Abschnitts zu Interoperabilität und offenen
+ Standards ist enttäuschend: Zwar erklären über  Seiten ausführlich,
+ was Interoperabilität und (offene) Standards bedeuten, wo diese
+ angewendet werden und dass durch den Einsatz Offener Standards mehr
+ Unabhängigkeit gegenüber Herstellern erreicht wird. Aber die
+ Handlungsempfehlungen fordern schlicht den Status quo, nämlich das, was
+ die Bundesregierung seit etwa zehn Jahren macht: Die geforderte
+ Diskussion, wie sich offene Standards fördern lassen, findet im
+ IT-Planungsrat statt; die Definition gemeinsamer offener Standards und
+ Empfehlungen dazu finden sich im SAGA-Dokument, das bei der
+ Bauftragten der Bundesregierung für die Informationstechnik
+ kontinuierlich weiterentwickelt wird. Zum anderen sollen Bund und
+ Länder neue Software plattformunabhängig entwickeln - auch dies
+ empfiehlt der Migrationsleitfaden der Bundesregierung schon seit
+ Jahren.
+
+ Das Thema Freie Software startet mit einer guten Übersicht zur
+ Entstehungsgeschichte Freier Software, zu den verschiedenen Lizenzen
+ sowie den Vor- und Nachteilen Freier Software. Bei den
+ Geschäftsmodellen Freier Software wird das Problem von
+ Open-Core-Software angerissen. Die Opposition hat dazu eine
+ Handlungsempfehlung formuliert, dass Maßnahmen getroffen werden müssen,
+ um Verbraucher, Unternehmen und die Verwaltung vor dem Missbrauch der
+ Begriffe Freie Software und Open Source zu schützen.
+
+ Bei Bildung und Forschung wird den Ländern empfohlen, Kinder und
+ Jugendlichen schon früh für Software-Entwicklung zu begeistern.
+ Außerdem sollen neue Lehrmittel vorab auf Plattformunabhängigkeit
+ geprüft werden. Zum Einsatz Freier Software in der öffentlichen
+ Verwaltung konzentriert sich der Bericht auf die das Limux-Projekt der
+ Stadtverwaltung München sowie den Einsatz von GNU/Linux im
+ Auswärtigen Amt. Hier wurde die Chance verpasst, auf andere große,
+ doch weit weniger strittige GNU/Linux-Installationen einzugehen,
+ beispielsweise in der Bundesagentur für Arbeit auf .
+ Selbstinformationsplätzen, auf . Arbeitsplätzen bei der Polizei in
+ Niedersachsen oder . Arbeitsplätzen in der niedersächsischen
+ Finanzverwaltung.
+
+ In der Bundeshaushaltsordnung soll außerdem klar gestellt werden, dass
+ die öffentliche Verwaltung Weiterentwicklungen an Dritte außerhalb der
+ Verwaltung weitergeben darf. Bei der Vergabe solle keine "Bevorzugung
+ von Freier oder aber propritärer Software erfolgen". Das steht im
+ Konrast zu Stellungnahmen aus der Expertenhörung, in der beispielsweise
+ der Rechtsanwalt Till Jaeger bemängelte, dass die Beschaffung Freier
+ Software oft zu kompliziert ist und daher eine Benachteiligung
+ stattfindet - schade, dass es die Projektgruppe verpasst hat, dazu ein
+ Gutachten zu beauftragen. Nur von der Opposition getragen werden die
+ Empfehlungen, Eigenentwicklungen möglichst als Freie Software und mit
+ öffentlichen Geldern finanzierte Software unter einer freien Lizenz zu
+ veröffentlichen.
+
+ Lesenswert ist die Analyse des Sachverständigen Padeluun, welche
+ Probleme im Bereich Mobiltelefone für Freie Software bestehen. In den
+ Empfehlungen wird das Thema leider nur bei der Opposition aufgegriffen:
+ App-Store-Betreiber sollen daran gehindert werden, ihre Position
+ ausnutzen, um bestimmte Software zu unterbinden.
+
+ Ausführlich beschäftigt sich der Bericht mit der Thematik "Secure Boot"
+ und der Frage, wer letztlich die Hoheit über ein Gerät hat. Zu Recht,
+ geht es hier doch um unser aller Entmündigung durch die
+ Gerätehersteller. Die FSFE hatte dazu den Sachverständigen ihre
+ Analyse zur Verfügung gestellt und viele Fragen beantwortet.
+ Resultat: Eine gute Analyse der Sachverständigen Markus Beckedahl und
+ Alvar Freude sowie eine gemeinsame Handlungsempfehlung, die das
+ Eckpunktepapier der Bundesregierung zu "Trusted Computing und
+ Secure Boot" ausdrücklich begrüßt. Bund und Ländern wird nahegelegt,
+ die darin enthaltenen Forderungen durchzusetzen.
+
+ Leider wurden auch hier die zusätzlichen Empfehlungen der Opposition
+ und ihrer Sachverständigen von der Koalition abgelehnt. So konnte sich
+ die Enquete weder darauf einigen, dass Verbraucher "vor dem Erwerb
+ eines Gerätes klar und deutlich auf die in diesem Gerät implementierten
+ technischen Maßnahmen" hingewiesen werden, noch gibt es eine gemeinsame
+ Empfehlung, das Verwaltungen nur Geräte anschaffen sollen, die die
+ Forderungen des Eckpunktepapiers erfüllen.
+
+ Es wäre schön gewesen, wenn mehr Zeit für die zukünftigen
+ Herausforderungen und die daraus resultierenden Handlungsempfehlungen
+ gewesen wäre. Die Projektgruppe Interoperabilität, Standards und Freie
+ Software startete erst spät und die meiste Zeit wurde auf den
+ Ist-Zustand verwendet. Erst in der vorletzten Sitzung wurden die
+ Handlungsempfehlungen hastig abgehandelt. Dadurch war es nicht möglich,
+ die Handlungsempfehlungen der Opposition - in der Projektgruppe auch
+ von den Vertretern der Koalition für inhaltlich sinnvoll befunden -
+ eingehender zu beraten, um mehr davon zur Abstimmung in die
+ Enquete-Kommission zu bringen.
+
+ Wird es jetzt nach dem Abschluss der Enquete-Kommission schnelle
+ Änderungen geben? Nein, sicher nicht - es gibt weder ein Budget noch
+ einen definierten Prozess zur direkten Umsetzung der
+ Handlungsempfehlungen.
+
+ War damit die ganze Arbeit umsonst? Ich denke nein. Erstens wird der
+ Bericht von allen Fraktionen im deutschen Bundestag getragen;
+ Unterstützer von Freier Software können bei Diskussionen mit Politikern
+ oder Vorgesetzten aus diesem Bericht zitieren, ohne sich dem Vorwurf
+ der Parteilichkeit auszusetzen. Zweitens sind die Handlungsempfehlungen
+ der Opposition eine gute Inspiration für Politiker, die etwas für Freie
+ Software bewirken wollen. Drittens hat der Bericht eine Signalwirkung
+ an andere Länder: Die Themen Interoperabilität und Freie Software sind
+ politisch relevant und haben einen Platz im Parlament.
+
+ Schließlich, und das ist ist wohl der wichtigste Punkt: Die
+ Abgeordneten der Enquete und ihre Mitarbeiter haben sich intensiv mit
+ dem Thema Interoperabilität, Standards und Freie Software
+ auseinandergesetzt. Das dabei vermittelte Wissen könnte langfristig
+ wertvoller sein als der Bericht und die Handlungsempfehlungen. Schön
+ wäre es, wenn der ein oder andere Teilnehmer der Projektgruppe weiter
+ an den Themen arbeiten würde, beispielsweise in dem angedachten
+ ständigen Bundestags-Ausschuss für Netzpolitik. Die FSFE und ihre
+ Unterstützer werden auf jeden Fall die Ergebnisse des Berichts und
+ deren Handlungsempfehlungen aufgreifen, um diese mit Politik und
+ Verwaltung weiter zu verfolgen. (odi)
+Die Woche: Open Source im Wahljahr
+
+ Die Free Software Foundation Europe hat anlässlich der Bundestagswahlen
+ die deutschen Parteien zu ihren Ansichten zu freier Software befragt.
+ Neuland war das Thema für keine der Befragten, auch nicht für die CDU.
+
+ Das Internet mag für Bundeskanzlerin Angela Merkel (CDU) vielleicht
+ noch #Neuland sein, zu freier Software haben aber ihre Partei und
+ alle anderen Parteien, die im Herbst für den Bundestag kandidieren,
+ eine Meinung. So fragte die Free Software Foundation Europe (FSFE), wie
+ denn zum Beispiel künftig die Weitergabe von Software geregelt werden
+ soll, deren Entwicklung mit Steuergeldern finanziert wurde. Einzig die
+ CDU sieht hier Schwierigkeiten, etwa wenn die Software für verbotene
+ Zwecke eingesetzt werden könnte oder sich dahingehend verändern ließe.
+ Außerdem sieht man Probleme mit dem § Abs.  der
+ Bundeshaushaltsordnung, die das Veräußern von Vermögensgegenständen
+ regelt. Alle anderen Parteien sind sich darin einig, dass mit
+ Steuergeldern entwickelte Software auch frei verfügbar sein sollte.
+
+ Bei den Nutzungsrechten ist dann auch die CDU der gleichen Meinung wie
+ die übrigen Parteien: Es sei nicht akzeptabel, dass die Behörden und
+ Verwaltungen oftmals keine Rechte an den Quellen der in ihrem Auftrag
+ entwickelten Software haben. Dies sollte bereits im Vergabeverfahren
+ sichergestellt werden, regt die CDU an.
+
+ Insgesamt zehn Fragen stellte die FSFE den Parteien rund um das
+ Thema Open Source, aber auch zur Gängelung von Endgerätebenutzern durch
+ die Hersteller. Allerdings war die Frage der FSFE zum Recht des
+ Besitzers, alternative Firmwares auf Tablets und Smartphones aufspielen
+ zu können, wohl zu verklausuliert. Keine Partei ging darauf ein, man
+ äußerte sich nur zu datenschutzrechtlichen Aspekten. Während die
+ meisten Parteien für einen umfangreichen Datenschutz plädieren, halten
+ sich FDP und Freie Wähler zurück: Laut FDP müsse sich der Bürger mit
+ neuen Entwicklungen auseinandersetzen, zudem sei es besser, "die
+ Chancen zu beleuchten als, wie allzu oft, nur über Risiken zu
+ sprechen". Das Wort Datenschutz kommt in der Antwort nicht vor. Nach
+ Ansicht der Freien Wähler gibt es hier auch keinen Regelungsbedarf:
+ "Solange es den Menschen im alltäglichen Leben egal ist, was mit ihren
+ Daten passiert - siehe Facebook - werden Gesetze keine Abhilfe
+ schaffen."
+
+ Bei Secure Boot und Trusted Computing sind sich dann wieder alle einig:
+ Der Anwender muss die Kontrolle über seinen PC behalten. Die FDP und
+ die Linke können sich aber vorstellen, dass Anwender aus
+ Sicherheitsgründen dieses Recht freiwillig aufgeben. Die SPD fordert
+ ausdrücklich, dass solche Beschränkungen bei der Auslieferung eines
+ Geräts grundsätzlich deaktiviert zu sein haben und ein Anwender die
+ Aktivierung auch später wieder zurücknehmen können muss.
+
+ Die zum Teil irreführende Verwendung des Begriffs Open Source durch
+ Softwareanbieter ist nur für einen Teil der Parteien ein Problem. CDU
+ und FDP sehen hier den "mündigen Bürger" in der Pflicht, selbst zu
+ beurteilen, welche Rechte eine vermeintliche Open-Source-Software dem
+ Anwender bietet. Auch die Freien Wähler sehen keinen gesetzlichen
+ Regelungsbedarf. SPD, Grüne, Linke und Piraten hingegen haben das
+ Problem erkannt und machen verschiedene Lösungsvorschläge, etwa eine
+ verbesserte Aufklärung der Anwender oder die Einführung von Siegeln für
+ echte Open-Source-Software, was die Grünen anregten.
+
+ Die Umfrage zeigt, dass das Thema Open-Source-Software bei den Parteien
+ keineswegs Neuland ist, auch wenn sich manche Probleme wie der
+ Austausch der Firmware bei Smartphones und Tablets noch nicht bis in
+ die Politik herumgesprochen haben. Es bleibt abzuwarten, wie viel von
+ den Vorhaben tatsächlich umgesetzt wird. So hätte die CDU zum Beispiel
+ in der laufenden Legislaturperiode längst das selbst erkannte Problem
+ des § der Bundeshaushaltsordnung lösen können, etwa durch eine
+ Ausnahmeregelung für Open-Source-Software. Vielleicht gibt der Wähler
+ ihr ja nochmals vier Jahre Zeit dafür. (mid)
+ Mit der Ankündigung, einen eigenen Grafik-Stack für Ubuntu zu
+ entwickeln, hat Canonical für Unmut in der Linux-Desktop-Welt gesorgt.
+ Doch dafür gibt es eigentlich keinen Grund.
+
+ Kennen Sie das "Not invented here"-Syndrom? Damit ist gemeint, dass
+ Unternehmen lieber etwas Eigenes erfinden, als mit dem bereits
+ Bestehenden zu arbeiten. Zum Beispiel Canonical: Der Ubuntu-Hersteller
+ entwickelt für seine Vision "Ubuntu für alle Geräte vom Smartphone bis
+ zum Desktop" lieber einen eigenen Display Server, als auf
+ bestehende Lösungen wie das bewährte X Window System, dessen
+ designierten Nachfolger Wayland oder den Android-Display-Server
+ Surfaceflinger zurückzugreifen.
+
+ Dabei sind X, Wayland und Android alle Open Source. Canonical könnte
+ jedes dieser Projekte als Grundlage für einen eigenen Grafik-Stacks
+ nehmen und um die fehlenden Funktionen erweitern. Oder einfach aktiv
+ bei einem dieser Projekte einstiegen - naheliegend wäre der Display
+ Server Wayland, der ganz ähnliche Ziele verfolgt wie Canonicals
+ geplanter Mir und den Ubuntu-Mäzen Mark Shuttleworth schon vor
+ zweieinhalb Jahren als X-Nachfolger für Ubuntu propagiert hat.
+
+ Andere Linux-Distributoren praktizieren so etwas schon lange: Red Hat
+ hat mehrere Gnome-Entwickler angestellt, die dafür sorgen, dass sich
+ die Interessen des Unternehmens in der Entwicklung des Desktops
+ niederschlagen. Suse hat dasselbe mit KDE gemacht. Beide - und etliche
+ andere Firmen - bezahlen Kernel-Entwickler, die an den Stellen im
+ Linux-Kernel anpacken, die dem jeweiligen Unternehmen wichtig sind.
+
+ Klar, die Software anderer Leute passt nie perfekt auf das eigene
+ Problem; und jeder Programmierer hat schon die Erfahrung gemacht, dass
+ es manchmal einfacher ist, von vorne anzufangen, als bestehenden Code
+ anzupassen. Zudem kann es ganz schön mühselig sein, die eigenen Ideen
+ mit den Vorstellungen einer Community unter einen Hut zu bringen. Aber
+ mit der Entscheidung, mal wieder sein eigenes Ding durchzuziehen,
+ statt den Open-Source-typischen Weg der Zusammenarbeit zu gehen, hat
+ Canonical einiges Porzellan zerschlagen. Und das betrifft nicht nur die
+ Wayland-Macher, die angepisst waren, weil die Mir-Entwickler ihre
+ Entscheidung gegen Wayland zunächst mit nicht fundierten Vorwürfen
+ gegen Wayland begründet hatten.
+
+ Sowohl die Gnome- als auch die KDE-Entwickler haben jetzt
+ demonstrativ bekräftigt, dass sie ihre Desktops auf Wayland portieren
+ wollen. Es scheint, als ob damit die Linux-Desktop-Welt in zwei Lager
+ zerfallen ist: Canonical mit Mir auf der einen Seite, alle anderen mit
+ Wayland auf der anderen. Was allerdings nichts Neues ist: Der
+ Unity-Desktop ist auch eine Canonical-only-Geschichte geblieben, auf
+ die weder externe Desktop-Entwickler noch andere Distributoren
+ eingestiegen sind.
+
+ Letztlich läuft es wohl darauf hinaus, dass Canonical einen eigenen
+ Grafikstack für Ubuntu entwickelt. Wirklich schlimm ist das aber für
+ niemanden.
+
+ Denn Ubuntu braucht Anwendungen: Chrome, Firefox, Thunderbird, die
+ diversen Gnome-Programme von Gedit bis zu den
+ Gnome-Konfigurationstools. Um eine Gtk-Portierung auf Mir wird
+ Canonical daher nicht herumkommen. Qt, das andere große GUI-Toolkit der
+ Linux-Welt, muss sowieso ein Mir-Backend erhalten, schließlich soll der
+ Ubuntu-Desktop zukünftig in Qt und QML entwickelt werden. Damit wird
+ man auch Qt- und KDE-Programme unter Mir nutzen können. Und einen
+ X-Kompatibilitätslayer braucht Ubuntu sowieso. Ubuntu-User werden
+ daher vermutlich gar nichts von der Umstellung auf den neuen Display
+ Server Mir in Ubuntu . oder . merken - nicht mehr zumindest als
+ von einer Umstellung auf Wayland: Knirschen wird es so oder so, wenn
+ das X Window System abgelöst wird.
+
+ Und auch den Anwendern anderer Desktops und Linux-Distributionen geht
+ nichts verloren. Mit Intel engagiert sich bereits ein finanzkräftiges
+ Unternehmen für Wayland; die Entwicklung von Wayland läuft auch ohne
+ Canonical. Bislang zeichnet es sich auch nicht ab, dass in größerem
+ Umfang attraktive Anwendungen speziell für Ubuntu entwickelt würden.
+ Und wenn doch, wird sich sicher ein Weg finden, die Ubuntu-spezifischen
+ APIs auf anderen Distributionen nachzurüsten - der Code liegt ja offen.
+
+ Bleibt die Frage, ob Canonical die Entwicklung eines eigenen
+ Grafik-Stacks stemmen kann. Wir waren schon bei Unity skeptisch,
+ mussten uns aber eines Besseren belehren lassen: Canonical hat in
+ Eigenregie einen durchaus brauchbaren Linux-Desktop entwickelt.
+ Vermutlich werden sie das auch mit ihrem Display Server hinkriegen. Ich
+ bin gespannt, ob ich eher Gnome oder KDE auf Wayland oder Unity auf Mir
+ funktionieren sehe. (odi)
+

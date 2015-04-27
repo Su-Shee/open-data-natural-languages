@@ -1,0 +1,38 @@
+Natural Language Processing examples
+
+This project contains a Python, a Perl and an R script plus a simple GNUPlot.
+
+The Python script "estimate-gender.py" tries to pinpoint the gender of a
+GERMAN (!) text by applying a couple of word counts - namely pronouns,
+adjective, numerals, determiners. Those are word classes which seem to make it
+possible to distinguish texts by gender of the writer. 
+
+The Python script requires Python's NLTK framework!
+
+pip install nltk
+
+If you have textfiles, convert them to UTF-8 (iconv) and call
+
+./estimate-gender.py mytextfile
+
+The Perl script generates an automated summary by "tf-idf" and only requires
+the module IO::All
+
+cpan IO::All
+
+Call it with your textfile:
+
+./automated-summary.pl mytextfile
+
+The R script generates a "word cloud" by word frequency without GERMAN (!) stopwords.
+
+It requires the R packages tm and wordcloud:
+
+install.packages('tm')
+install.packages('wordcloud')
+
+Then source the script on R's REPL:
+
+source('wordcloud.R') and et viola, there pops up your word cloud.
+
+

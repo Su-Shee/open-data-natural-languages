@@ -1,0 +1,298 @@
+Die Woche: Komfort oder Lerneffekt?
+
+ Immer mal wieder fragen mich Leser an der c't-Hotline, welche
+ Linux-Distribution ich ihnen empfehle. Noch vor einem Jahr wäre meine
+ Wahl dabei wohl auf Ubuntu gefallen, das Einsteigern und
+ Fortgeschrittenen gute Dienste leistet. Mittlerweile verwende ich
+ selbst Arch Linux und bin mir nicht mehr sicher, ob ich den Lesern mit
+ der Ubuntu-Empfehlung einen guten Dienst erwiesen habe.
+
+ Das Spektrum der Linux-Distributionen ist breit: Am einen Ende
+ rangieren benutzerfreundliche Systeme wie Ubuntu, bei denen
+ Installation und Konfiguration weitgehend automatisch geschehen und
+ auch Einsteiger nicht mit komplizierten Fragen belästigt werden. Das
+ andere Ende kennzeichnen Distributionen wie Arch Linux, die dem
+ fortgeschrittenen Anwender einiges an Know-how oder die Bereitschaft,
+ vieles nachzulesen und zu erlernen, abverlangen. Andere Systeme liegen
+ irgendwo dazwischen, doch die meisten schreiben sich - zumindest auf
+ ihrer Projekt-Website - "Einsteigerfreundlichkeit" auf die Fahnen.
+
+ Canonical beispielsweise spricht mit Ubuntu auch diejenigen Anwender
+ an, die sich eigentlich gar nicht für ihr Betriebssystem im Allgemeinen
+ oder gar Linux im Besonderen interessieren - und das dürfte die breite
+ Masse der Computer-Nutzer sein. Diese Ignoranz gegenüber einer
+ Hacker-Community, die ein kostenlos verfügbares, zuverlässiges,
+ vielseitig anpassbares und flexibel einsetzbares Betriebssystem
+ entwickelt hat, ist eingefleischten Linux-Verfechtern schon lange ein
+ Dorn im Auge.
+
+ Doch sie hat auch etwas Gutes: Meinen Freundinnen beispielsweise ist es
+ egal, ob ich bei der Rechnerwartung ihr geschrottetes Windows wieder in
+ Schuss bringe oder stattdessen Linux installiere - Hauptsache, es
+ funktioniert und sie können surfen, Mails verschicken, Filme schauen
+ und Musik abspielen. Erzähle ich was von Sicherheit, Stabilität und
+ "leicht zu aktualisieren", nehmen sie das wohlwollend als Zusatz-Bonus
+ hin, entscheidend ist es für sie nicht. Ganz oben auf der
+ Prioritätenliste steht, dass das System keine Probleme macht, es soll
+ unsichtbar im Hintergrund laufen, ohne unangenehm aufzufallen. Und
+ obwohl sich die meisten meiner Freundinnen nicht die Bohne für Linux
+ interessieren, kommen sie - ist es einmal eingerichtet - damit genauso
+ gut zurecht wie vorher mit Windows. Das ist auch der
+ Benutzerfreundlichkeit von Ubuntu & Co. zu verdanken.umfangreicher
+
+ Meine erste Arch-Linux-Installation hier in der Redaktion löste bei
+ vielen Kollegen - auch aus dem Linux-Ressort - ungläubiges Staunen aus.
+ Einen grafischen Installationsassistenten sind schließlich auch die
+ Kollegen gewöhnt, die sich sonst vor allem auf der Kommandozeile zu
+ Hause fühlen. Auch dass der Rechner nach der eigentlichen Installation
+ noch längst nicht arbeitsfähig war, bot reichlich Gelegenheit für
+ spottende Kommentare ob der noch fehlenden grafischen Oberfläche,
+ nachzuinstallierenden Programmen und zu konfigurierenden
+ Systemdiensten. Doch das Aufsetzen des Systems bot mir die Gelegenheit,
+ mich mal wieder mit den Details meines Linux-Systems zu beschäftigen,
+ neuere Entwicklungen im Arch-Wiki nachzulesen und das System dann genau
+ so einzurichten, wie ich es brauche. Keine überflüssigen Dienste im
+ Hintergrund, keine unnötigen Pakete und genau die Programme, die ich
+ nutze.
+
+ All das hat mir wieder einen guten Überblick darüber verschafft, was
+ hinter den Kulissen eines modernen Linux-Systems eigentlich so abläuft.
+ Bei Ubuntu & Co. bekommt man dagegen gar nicht mit, welche Arbeiten
+ einem der Installer abnimmt und was dann so alles im Hintergrund
+ werkelt. Da keine Notwendigkeit besteht, sich genauer mit dem System zu
+ beschäftigen, ist der Lerneffekt gleich null. Das rächt sich spätestens
+ dann, wenn doch mal irgendwas nicht geht und man gar nicht weiß, wo man
+ mit dem Troubleshooting anfangen soll.
+
+ Werde ich mal wieder darum gebeten, ein Linux-System zu empfehlen, wird
+ meine Antwort jedenfalls deutlich ausführlicher ausfallen. Natürlich
+ tun sich viele Anwender mit Ubuntu, OpenSuse oder Mageia zunächst
+ leichter, doch wer ein maßgeschneidertes System möchte und bei
+ Problemen nicht immer andere um Hilfe bitten will, dem bietet Arch
+ Linux eine gute Gelegenheit, den Dingen auf den Grund zu gehen und mit
+ Hilfe des umfangreichen Wikis nach und nach dazuzulernen. Ein ganz auf
+ die eigenen Bedürfnisse abgestimmtes Linux-System gibt es als Bonus
+ oben drauf. (lmd)
+KDE .: Schlauere Suche, schönere Fenster, mehr QML
+
+ Version . des KDE-Desktops hat Neues für Kate-, KMail- und
+ Okular-Anwender im Gepäck. Marble verfolgt jetzt auch Mars-Sonden. Viel
+ Schweiß floss in die Code-Basis der Desktopsuche Nepomuk. Und unter der
+ Haube zieht QML immer weitere Kreise.
+
+ Die Desktopumgebung KDE in Version . ist wie ihre Vorgänger seit
+ Version . in drei Hauptbereiche aufgeteilt, die zusammen die KDE
+ Software Compilation (KDE SC) bilden: KDE Applications umfasst
+ KDE-Anwendungen wie die Office-Suite Calligra, die Kartenanwendung
+ Marble oder Spiele. Verschiedene Oberflächen für Touch-Geräte (Plasma
+ Active), Netbooks und Desktops sind den KDE Workspaces zugeordnet;
+ ihr Kern ist die Arbeitsumgebung Plasma mit ihren Widgets (Plasmoiden
+ in der KDE-Terminologie). Die KDE Platform schließlich enthält
+ Backend-Infrastruktur wie den PIM-Datenspeicher Akonadi, den
+ Fenstermanager, die KDE-Bibliotheken und das KDE-SDK selbst.
+
+KDE Applications: Neues für Marble, Kate, KMail und Ktouch
+
+ Durch eine neue Technik im PDF-Betrachter Okular kann man jetzt viel
+ schneller in ein PDF hineinzoomen: Der brasilianische Informatikstudent
+ Mailson Daniel Lira Menezes hat Okular während eines Projekts im Google
+ Summer of Code (GSoC ) dazu gebracht, statt des ganzen
+ PDF-Dokuments nur noch die betrachtete Region darzustellen (Tiled
+ Rendering). Das entlastet den Arbeitsspeicher, wenn es ans Zoomen geht.
+ Vergrößerungen sind nun auch weit oberhalb der bisherigen
+ -Prozent-Grenze möglich.
+
+ Marble bringt neue Mars- und Venuskarten mit. Ebenfalls das Ergebnis
+ eines Sommer-Programmierprojekts sind neue Karten in der Geo-Software
+ Marble, die aber nicht unter dem Dach von Google, sondern beim
+ Summer of Code in Space der europäischen Raumfahrtbehörde ESA
+ enstanden sind. René Küttner aus Dresden entwickelte neue Anzeigemodi
+ für die Satelliten Mars Express, Venus Express und SMART-. Das kommt
+ nicht nur der Darstellung der Marssatelliten zugute, sondern hilft auch
+ an anderer Stelle: "Besseres Tracking von Mars-Satelliten verbessert
+ auch das Tracking einer Fahrzeugflotte oder die Navigation beim
+ Geocaching mit Marble", erklärt Torsten Rahn gegenüber Heise. "Darum
+ werden wir auch in künftigen Marble-Versionen Bereiche wie Astronomie
+ und Raumfahrt ausbauen."
+
+ Kleinere Neuerungen gibt es bei Kmail: Maintainer Laurent Montel hat
+ eine automatische Rechtschreibkorrektur eingeführt und den
+ Import-Wizard verbessert, der zum Beispiel Adressbücher aus anderen
+ Anwendungen einsammelt. Im übrigen hat er für diese Release vor allem
+ Löcher im Speichermanagement gestopft. Größere Pläne hat Laurent Montel
+ für die kommende Version .: Er will die HTML-Fähigkeiten von Kmail
+ mit einer eigenen, Qwebkit-basierten Bibliothek ausbauen.
+
+ Die neue "Dokumentenkarte" ersetzt auf Wunsch den Scrollbar - nicht nur
+ in Kate. Einige Neuerungen im Editor Kate sind beim Wiener
+ Coding-Sprint im Oktober  entstanden, bei dem  Entwickler vom
+ Kate- und Kdevelop-Team die  Bugreports auf  offene Bugs und
+ Feature-Requests reduziert haben. Dabei fiel mal eben eine Art
+ Dokumentenkarte heraus: Sowohl im Texteditor als auch in der
+ KDE-Entwicklungsumgebung lässt sich am rechten Rand anstelle der
+ Scrollbar nun eine Übersicht aktivieren, die das Dokument und in einem
+ hervorgehobenen Fenster den aktuellen Ausschnitt des Editors anzeigt.
+ So kann man bei langen Dokumenten einfach an verschiedene Stellen
+ springen. Dieses Feature beherrscht jetzt auch der alternative Editor
+ Kwrite, der auf Katepart basiert, der Editor-Komponente von Kate.
+ Katepart kommt auch in dem Latex-Frontend Kile zum Einsatz.
+
+ Die Entwicklung von KDE-Anwendungen wird zunehmend von C auf QML und
+ Qt Quick umgestellt. Das hat die Nebenwirkung, dass mehr Qt-Entwickler
+ auch zu KDE finden und so die Anwendungsbasis erweitern. Ein Beispiel
+ dafür ist die seit  brachliegende Tipp-Lern-Anwendung Ktouch.
+ Sebastian Gottfried wollte Qt Quick lernen, stieß auf das verwaiste
+ Programm und portierte es auf QML. Dabei unterzog er die Oberfläche
+ einer Renovierung und programmierte einen neuen grafischen
+ Begrüßungsdialog. Als echte Neuerung ist neben neuen Schreibkursen eine
+ Liniendiagrammauswertung hinzugekommen, die die getippten Zeichen pro
+ Minute mit der benötigten Zeit in zwei Graphen gegenüberstellt.
+
+KDE Workspaces: Hintergründiges bei Nepomuk und Kwin
+
+ Der neue File Indexer in Nepomuk erlaubt eine feinkörnige Kontrolle der
+ zu durchsuchenden Dateien. In der KDE-Umgebung Plasma floss einige
+ Arbeit in den "sozialen semantischen Desktop" Nepomuk. Vishesh
+ Handa hat einen ganz neuen Datei-Indexer geschrieben, der den 
+ eingeführten Indexer Strigi ersetzt - die C-Bibliothek Strigi bot
+ seit KDE  die Möglichkeit, Attribute verschiedener Dateien abzurufen,
+ zum Beispiel die Länge eines Songs oder die Größe eines Bildes. Als
+ Gründe für den Wechsel führt Handa Strigis Schwierigkeiten mit
+ verschiedenen gängigen Dokumententypen sowie dessen umfangreiche,
+ schwierig zu pflegende Codebasis an. Zudem hat die Desktopsuche mit
+ Nepomuk eine Verwaltungsoberfläche für Suchtags bekommen. Der neue
+ Nepomuk Cleaner räumt in der Nepomuk-Datenbank zum Beispiel doppelte
+ Metadateien oder leere Tags auf.
+
+ In bei dem KDE-Fenstermanager Kwin gab es einige Änderungen, auch wenn
+ Maintainer Martin Gräßlin die Version . als "ein ruhiges Release für
+ unsere Nutzer" beschreibt. Und doch ist . die erste Version, in der
+ Kwin für einige Operation die X-C-Bindings (XCB) verwendet. Ins Haus
+ steht nämlich die Umstellung von der generischen X-Bibliothek Xlib
+ auf die neue Abstraktionsschicht XCB: Zum einen ist das Voraussetzung
+ für den anstehenden Umstieg auf Version  des Qt-Toolkits, die unter
+ Linux den neuen Display-Server Wayland oder eben XCB erfordert.
+ Zudem, erklärt Gräßlin, bietet XCB bei der Interaktion mit dem X
+ Window System einige technische Vorteile gegenüber der Xlib.
+
+ Dateimanager Dolphin: Besserer Zugriff auf externe Geräte per MTP. An
+ sichtbaren Neuerungen sind im Fenstermanagement animiertes Minimieren
+ und Maximieren hinzugekommen sowie die Möglichkeit, Verhalten und
+ Aussehen von Kwin mit Skripten zu modifizieren. Das Anwendungsmenü
+ lässt sich jetzt komplett als Ausklappmenü im Fensterrahmen zu
+ verstecken. Zu aktivieren ist das in den Systemeinstellungen unter
+ "Erscheinungsbild", dann "Stil", und dort den "Menubar Style" auf
+ "Title Bar Button" setzen. Die Option soll aber vorerst nur im
+ Standard-Theme Oxygen verfügbar sein. Wer sie nicht findet, soll sich
+ bei seiner Distribution beschweren, zwinkert er in einem
+ Blogbeitrag.
+
+ Ein neuer Print Manager soll den Umgang mit Druckern unter KDE
+ erleichtern. Der Dateimanager Dolphin unterstützt jetzt den
+ Dateizugriff per MTP besser - das sollte den Datenaustausch mit
+ Mobilgeräten wie Smartphones erleichtern.
+
+KDE Platform: Auf dem Weg zu QML
+
+ KDE . hat weitere Teile seiner Benutzerschnittstelle von C auf QML
+ und Qt Quick portiert, was für den Anwender weitgehend unsichtbar
+ bleibt, wenn man nicht sehr genau hinsieht. Für Entwickler ist die
+ QML-Richtung von praktischer Bedeutung. Widgets beispielsweise
+ erstellen sie jetzt mit so genannten QML Containments, statt sie von
+ der Qt-Klasse QGraphicsWidgets abzuleiten. Aus Benutzersicht ist das
+ Ergebnis dasselbe; die KDE-Entwickler versprechen sich von der
+ QML-Marschrichtung jedoch viel Integrationsleistung und Vereinfachung
+ mit Blick auf zukünftige Releases.
+
+ Bei den KDE Workspaces spielt QML eine immer wichtigere Rolle.
+
+ Es gibt mit KDE . erstmals ein dediziertes Plasma-SDK namens
+ Plasmate, das allerdings eher die Tablet-Oberfläche Plasma Active
+ adressiert. In der traditionellen KDE-Entwicklungsumgebung Kdevelop
+ dürfen sich Entwickler über eine neue Unit-Test-Einheit freuen. Bislang
+ mussten KDE-Entwickler auf den Qt Creator zurückgreifen, wenn sie QML
+ benutzen wollten; jetzt gibt es ein QML-Plugin für Kdevelop, das
+ allerdings noch am Anfang der Entwicklung steht, wie
+ Kdevelop-Entwickler Milian Wolf schreibt.
+
+ Sein Kollege Ralf Habacker bezeichnet als größtes Stück Arbeit an
+ dieser Kdevelop-Release, endlich alle Qt--Klassen nach Qt  portiert
+ zu haben. Das notorisch unterbesetzte Kdevelop-Team hat nämlich das
+ ganze Jahr  dafür aufwenden müssen. Schon seit  sträuben sich
+ einige Klassen hartnäckig gegen die Portierung -- zum Beispiel die
+ Klasse "QGraphicsView". Diese Aufgabe haben die Entwickler nun
+ abgehakt: "In zukünftigen Versionen werden dadurch neue Features
+ einfacher zu implementieren zu sein", sagt Habacker, "und einem
+ Qt--Port steht auch nichts mehr im Wege."
+
+ Startpunkt für Anwendung und Installation der KDE Software Compilation
+ . ist die Info-Seite zu KDE .. Weitere Einzelheiten zu den
+ Neuerungen enthalten je eigene Release-Announcements zu
+ Applications, Workspaces und Platform. (odi)
+Die Woche: Anerkennung für freie Software
+
+ Die Aufregung war groß, als CyanogenMod-Entwickler Koushik Dutta auf
+ Google ankündigte, dass das Custom-ROM künftig stets anonymisierte
+ Nutzerstatistiken übermitteln würde. Bereits tags darauf rudern die
+ CM-Macher zurück und versprechen, weiterhin eine Option anzubieten,
+ mit der sich das Versenden der Daten abstellen lässt. Verlangen
+ Entwickler zuviel, wenn sie für kostenlos bereit gestellte Software
+ einige Informationen wollen?
+
+ Die von einer Community entwickelte modifizierte Android-Firmware
+ CyanogenMod steht im Netz kostenlos zum Download bereit. Von der
+ unbezahlten Arbeit der Entwickler profitieren viele Anwender:
+ Zahlreiche ältere Mobiltelefone lassen sich dank CyanogenMod mit einer
+ aktuellen Android-Version betreiben und wer aktuelle Geräte damit
+ nutzt, befreit diese damit vom Ballast lästiger Hersteller-Software und
+ gewinnt zusätzliche Funktionen.
+
+ Eine Gegenleistung jenseits der Anerkennung einzelner Nutzer in Foren
+ und Social Media erhalten die Entwickler dafür nicht. Ist es da zuviel
+ verlangt, wenn sie einen Überblick darüber haben wollen, wie viele
+ Menschen ihre Software in welcher Version auf welchen Geräten in
+ welchen Ländern verwenden? CyanogenMod ist ein Projekt, in das viele
+ Entwickler ihre Freizeit investieren. Die Nutzerinformationen könnten
+ dazu beitragen, die Entwicklung gezielter voranzutreiben und die
+ kostbare Zeit nicht mit Dingen zu verschwenden, die kaum jemand nutzt.
+
+ Die Änderung und was übertragen wird, wurde ganz offen kommuniziert:
+ neben einer anonymisierten, eindeutigen Geräte-ID, die anhand der IMEI
+ oder MAC-Adresse errechnet wird, der Gerätetyp, die CyanogenMod-Version
+ sowie Land und Provider. Anhand der Geräte-ID lassen sich CM-Geräte
+ wiedererkennen - so wird nicht jede Installation einer neuen über eine
+ alte CM-Installation als neuer Nutzer gezählt. Dokumentieren die so
+ erfassten Zahlen die große Nutzergemeinde, lassen sich auch die
+ Gerätehersteller leichter zur Zusammenarbeit bewegen.
+
+ Bereits seit CM verschickt das Custom-ROM anonymisierte Nutzerdaten,
+ sofern der Anwender diese Funktion nicht deaktiviert. Diese Option
+ hatte CyanogenMod-Chefentwickler Steve Kondik (cyanogen) aus der
+ aktuellen CM-Version ., die aus den Android-.-Quellen entsteht,
+ entfernt. Die CM-Entwickler haben dabei auf Transparenz gesetzt und die
+ Anwender umgehend informiert. So mancher App-Entwickler sollte sich
+ daran ein Beispiel nehmen: Viele Android-Apps fragen nicht lange und
+ fordern einfach weitgehende Rechte an, ohne dem Anwender zu erklären,
+ wofür diese benötigt werden.
+
+ Dass das CyanogenMod-Projekt die Nutzerdaten mit Google Analytics
+ auswerten will, hat die Bedenken vieler Kritiker nur verstärkt. Das
+ Hosten und Pflegen einer Open-Source-Lösung wie Piwik wäre sicher
+ die bessere Alternative, würde aber zusätzlich Geld und Zeit kosten.
+
+ CyanogenMod-Chefentwickler Steve Kondik ist nach wie vor davon
+ überzeugt, dass das Anliegen der Entwickler legitim ist, will aber auch
+ die Wünsche der Anwender nicht ignorieren und hat das Opt-out für
+ die Nutzerstatistik wieder eingebaut. Unter Umständen hat die Aktion
+ ihr Ziel aber trotzdem erreicht: Viele Anwender haben dem
+ CyanogenMod-Projekt in der Diskussion den Rücken gestärkt, seine Arbeit
+ gelobt und betont, dass sie bereit sind, die Statistikfunktion auch
+ freiwillig zu aktivieren. Die entstandene Diskussion dürfte vielen
+ deutlich gemacht haben, wie wichtig Nutzerstatistiken für die
+ Entwickler sind, und sie sind nun womöglich eher bereit, freiwillig
+ Daten beizutragen.
+
+ Auf der anderen Seite hat die Diskussion auch mal wieder die
+ Erwartungshaltung und Gratis-Mentalität vieler Anwender verdeutlicht:
+ Entwickler sollen Software bitteschön kostenlos liefern - und auf
+ jegliche Gegenleistung verzichten. (lmd)
